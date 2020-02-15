@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Play Piano</title>
+  <link rel="icon" href="./piano-images/piano-favicon.png" type="image/gif" sizes="20x20">
+  <link rel="stylesheet" href="piano-style.css">
+</head>
+<body>
+  <ul class="set">
+    <li class="white b key" data-key="Sa"></li>
+    <li class="black as key" data-key="black-1"></li>
+    <li class="white a key" data-key="Re"></li>
+    <li class="black gs key" data-key="black-2"></li>
+    <li class="white g key" data-key="Ga"></li>
+    <li class="black fs key" data-key="black-3"></li>
+    <li class="white f key" data-key="Ma"></li>
+    <li class="white e key" data-key="Pa"></li>
+    <li class="black ds key" data-key="black-4"></li>
+    <li class="white d key" data-key="Dha"></li>
+    <li class="black cs key" data-key="black-1"></li>
+    <li class="white c key" data-key="Ni"></li>
+  </ul>
+
+  
+
+  <audio data-key="Sa" src="piano/piano-sa.wav"></audio>
+  <audio data-key="Re" src="piano/piano-re.wav"></audio>
+  <audio data-key="Ga" src="piano/piano-ga.wav"></audio>
+  <audio data-key="Ma" src="piano/piano-ma.wav"></audio>
+  <audio data-key="Pa" src="piano/piano-pa.wav"></audio>
+  <audio data-key="Dha" src="piano/piano-dha.wav"></audio>
+  <audio data-key="Ni" src="piano/piano-ni.wav"></audio>
+  <audio data-key="black-1" src="piano/piano-pa.wav"></audio>
+  <audio data-key="black-2" src="piano/piano-dha.wav"></audio>
+  <audio data-key="black-3" src="piano/piano-ni.wav"></audio>
+  <audio data-key="black-4" src="piano/piano-sa.wav"></audio>
+
+<script>
+  const keys = document.querySelectorAll('.key');
+  function playAudio(e) {
+    const audioElement = document.querySelector(`audio[data-key="${e.target.getAttribute('data-key')}"]`);
+    const key = document.querySelector(`.key[data-key="${e.target.getAttribute('data-key')}"]`);
+    console.log(audioElement);
+    if(!audioElement) {
+      alert('Please press correct key!!');
+    }
+    audioElement.currentTime = 0;
+    audioElement.play(); 
+  }
+  keys.forEach(key => {
+      key.addEventListener('click', playAudio);
+    });
+</script>
+</body>
+</html>
